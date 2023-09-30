@@ -10,11 +10,11 @@ class TranslateBody extends StatelessWidget {
     return Expanded(
       child: LayoutBuilder(
         builder: (context, constraints) {
-          return SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: constraints.maxHeight,
-              ),
+          return ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: constraints.maxHeight,
+            ),
+            child: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.all(8),
                 child: TranslateInputTextField(onChnagedText: onChangedText),
