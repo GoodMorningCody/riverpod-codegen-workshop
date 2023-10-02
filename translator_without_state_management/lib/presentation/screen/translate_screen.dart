@@ -23,7 +23,6 @@ class _TranslateScreenState extends State<TranslateScreen> {
         child: Column(
           children: [
             TranslateTop(
-              languages: languages,
               onExchangeLanguage: () {
                 setState(() {
                   final source = languages[LanguageKind.source.index];

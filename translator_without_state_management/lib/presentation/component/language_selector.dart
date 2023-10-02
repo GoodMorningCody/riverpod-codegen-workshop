@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:line_icons/line_icon.dart';
 import 'package:translator_without_state_management/common/color_util.dart';
 import 'package:translator_without_state_management/common/enum.dart';
+import 'package:translator_without_state_management/domain/provider/languages_notifier_provider.dart';
 import 'package:translator_without_state_management/presentation/bottom_sheet/language_bottom_sheet.dart';
 
-class LanguageSelector extends StatelessWidget {
+class LanguageSelector extends ConsumerWidget {
   final LanguageKind languageKind;
-  final Languages? language;
+  // final Languages? language;
   final Function(Languages language) onSelectedLanguage;
   const LanguageSelector({
     super.key,
     required this.languageKind,
     required this.onSelectedLanguage,
-    this.language,
+    // this.language,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final language = ref.watch(languagesNotifierProvider).getLanguage(languageKind);
     return GestureDetector(
       onTap: () {
         showModalBottomSheet<Languages>(

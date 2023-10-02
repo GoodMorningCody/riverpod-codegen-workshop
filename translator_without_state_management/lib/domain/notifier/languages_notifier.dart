@@ -7,4 +7,8 @@ class LanguagesNotifier extends Notifier<SourceAndDestLanguage> {
   SourceAndDestLanguage build() {
     return (Languages.korean, Languages.english);
   }
+
+  Languages? getLanguage(LanguageKind kind) {
+    return kind == LanguageKind.source ? state.$1 : state.$2;
+  }
 }
