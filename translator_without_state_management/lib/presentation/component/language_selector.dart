@@ -8,13 +8,9 @@ import 'package:translator_without_state_management/presentation/bottom_sheet/la
 
 class LanguageSelector extends ConsumerWidget {
   final LanguageKind languageKind;
-  // final Languages? language;
-  // final Function(Languages language) onSelectedLanguage;
   const LanguageSelector({
     super.key,
     required this.languageKind,
-    // required this.onSelectedLanguage,
-    // this.language,
   });
 
   @override

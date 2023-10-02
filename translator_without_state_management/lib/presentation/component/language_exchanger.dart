@@ -5,7 +5,6 @@ import 'package:translator_without_state_management/common/color_util.dart';
 import 'package:translator_without_state_management/domain/provider/languages_notifier_provider.dart';
 
 class LanguageExchanger extends ConsumerWidget {
-  // final VoidCallback onExchangeLanguage;
   const LanguageExchanger({super.key});
 
   @override

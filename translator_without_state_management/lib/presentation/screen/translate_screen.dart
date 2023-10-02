@@ -16,7 +16,6 @@ class TranslateScreen extends ConsumerStatefulWidget {
 
 class _TranslateScreenState extends ConsumerState<TranslateScreen> {
   String? sourceText;
-  // final List<Languages?> languages = [Languages.korean, Languages.english];
   @override
   Widget build(BuildContext context) {
     final languages = ref.watch(languagesNotifierProvider);
@@ -24,27 +23,7 @@ class _TranslateScreenState extends ConsumerState<TranslateScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            const TranslateTop(
-                // onExchangeLanguage: () {
-                //   setState(() {
-                //     final source = languages[LanguageKind.source.index];
-                //     languages[LanguageKind.source.index] =
-                //         languages[LanguageKind.dest.index];
-                //     languages[LanguageKind.dest.index] = source;
-                //   });
-                // },
-                // onChangedLanguage: (language, kind) {
-                //   setState(() {
-                //     languages[kind.index] = language;
-                //     final otherKind = kind == LanguageKind.source
-                //         ? LanguageKind.dest
-                //         : LanguageKind.source;
-                //     if (languages[kind.index] == languages[otherKind.index]) {
-                //       languages[otherKind.index] = null;
-                //     }
-                //   });
-                // },
-                ),
+            const TranslateTop(),
             TranslateBody(
               onChangedText: (text) {
                 setState(() => sourceText = text);
