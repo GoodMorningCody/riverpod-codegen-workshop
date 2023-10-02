@@ -5,16 +5,16 @@ import 'package:translator_without_state_management/presentation/component/langu
 import 'package:translator_without_state_management/presentation/component/language_selector.dart';
 
 class TranslateTop extends StatelessWidget {
-  final Function(Languages language, LanguageKind kind) onChangedLanguage;
-  final VoidCallback onExchangeLanguage;
-  const TranslateTop({super.key, required this.onChangedLanguage, required this.onExchangeLanguage});
+  // final Function(Languages language, LanguageKind kind) onChangedLanguage;
+  // final VoidCallback onExchangeLanguage;
+  const TranslateTop({super.key});
 
   Widget _createLanguageSelector(LanguageKind kind) {
     return Expanded(
       flex: 1,
       child: LanguageSelector(
         languageKind: kind,
-        onSelectedLanguage: (language) => onChangedLanguage(language, kind),
+        // onSelectedLanguage: (language) => onChangedLanguage(language, kind),
       ),
     );
   }
@@ -29,7 +29,7 @@ class TranslateTop extends StatelessWidget {
           child: Row(
             children: [
               _createLanguageSelector(LanguageKind.source),
-              LanguageExchanger(onExchangeLanguage: onExchangeLanguage),
+              const LanguageExchanger(),
               _createLanguageSelector(LanguageKind.dest),
             ],
           ),

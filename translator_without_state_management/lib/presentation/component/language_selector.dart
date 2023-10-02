@@ -9,17 +9,18 @@ import 'package:translator_without_state_management/presentation/bottom_sheet/la
 class LanguageSelector extends ConsumerWidget {
   final LanguageKind languageKind;
   // final Languages? language;
-  final Function(Languages language) onSelectedLanguage;
+  // final Function(Languages language) onSelectedLanguage;
   const LanguageSelector({
     super.key,
     required this.languageKind,
-    required this.onSelectedLanguage,
+    // required this.onSelectedLanguage,
     // this.language,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final language = ref.watch(languagesNotifierProvider).getLanguage(languageKind);
+    final languages = ref.watch(languagesNotifierProvider);
+    final language = languageKind == LanguageKind.source ? languages.$1 : languages.$2;
     return GestureDetector(
       onTap: () {
         showModalBottomSheet<Languages>(
@@ -29,7 +30,7 @@ class LanguageSelector extends ConsumerWidget {
               LanguagesBottomSheet(languageKind: languageKind),
         ).then((value) {
           if (value != null) {
-            onSelectedLanguage(value);
+            ref.read(languagesNotifierProvider.notifier).setLanguage(languageKind, value);
           }
         });
       },
@@ -44,7 +45,7 @@ class LanguageSelector extends ConsumerWidget {
             ),
           if (language != null)
             Text(
-              language!.display,
+              language.display,
               style: const TextStyle(color: Colors.white),
             ),
           const SizedBox(width: 4),
