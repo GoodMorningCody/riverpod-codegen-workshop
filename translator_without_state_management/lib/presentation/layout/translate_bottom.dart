@@ -3,8 +3,7 @@ import 'package:translator_without_state_management/common/color_util.dart';
 import 'package:translator_without_state_management/presentation/component/translate_button.dart';
 
 class TranslateBottom extends StatelessWidget {
-  final VoidCallback? onTranslate;
-  const TranslateBottom({super.key, required this.onTranslate});
+  const TranslateBottom({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +22,7 @@ class TranslateBottom extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(16)),
               color: ColorUtil.grayScale222,
             ),
-            child: TranslateButton(
-              onTranslate: onTranslate,
-            ),
+            child: const TranslateButton(),
           ),
         ),
       ],

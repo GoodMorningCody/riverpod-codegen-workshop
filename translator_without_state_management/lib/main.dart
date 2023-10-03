@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:translator_without_state_management/common/color_util.dart';
-import 'package:translator_without_state_management/data/translate_repository.dart';
-import 'package:translator_without_state_management/domain/translator.dart';
 import 'package:translator_without_state_management/presentation/screen/translate_screen.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-  runApp(const MainApp());
+  runApp(const ProviderScope(child: MainApp()));
 }
 
 class MainApp extends StatelessWidget {
@@ -21,11 +20,7 @@ class MainApp extends StatelessWidget {
         scaffoldBackgroundColor: ColorUtil.background,
       ),
       debugShowCheckedModeBanner: false,
-      home: TranslateScreen(
-        translator: Translator(
-          repository: TranslateRepository(),
-        ),
-      ),
+      home: const TranslateScreen(),
     );
   }
 }

@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:line_icons/line_icon.dart';
 import 'package:translator_without_state_management/common/color_util.dart';
+import 'package:translator_without_state_management/domain/provider/translate_text_notifier_provider.dart';
 
-typedef TextCallback = Function(String text);
-
-class TranslateInputTextField extends StatefulWidget {
-  final TextCallback onChnagedText;
-  const TranslateInputTextField({super.key, required this.onChnagedText});
+class TranslateInputTextField extends ConsumerStatefulWidget {
+  const TranslateInputTextField({super.key});
 
   @override
-  State<TranslateInputTextField> createState() =>
+  ConsumerState<TranslateInputTextField> createState() =>
       _TranslateInputTextFieldState();
 }
 
-class _TranslateInputTextFieldState extends State<TranslateInputTextField> {
+class _TranslateInputTextFieldState extends ConsumerState<TranslateInputTextField> {
   late final textEditingController = TextEditingController();
 
   @override
@@ -29,9 +28,7 @@ class _TranslateInputTextFieldState extends State<TranslateInputTextField> {
   }
 
   void _onChangedText() {
-    setState(() {
-      widget.onChnagedText(textEditingController.text);
-    });
+    ref.read(translateTextNotifierProvider.notifier).onChanged(textEditingController.text);
   }
 
   @override

@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import 'package:translator_without_state_management/common/enum.dart';
 import 'package:translator_without_state_management/common/papago.dart';
 import 'package:translator_without_state_management/data/papago_response.dart';
+import 'package:translator_without_state_management/domain/provider/languages_notifier_provider.dart';
 
 class TranslateRepository {
   final dio = Dio();
@@ -19,10 +19,10 @@ class TranslateRepository {
 
   Future<PapagoResponse> translate({
     required String source,
-    required List<Languages?> languages,
+    required SourceAndDestLanguages languages,
   }) async {
     final response = await dio.request(
-      "https://openapi.naver.com/v1/papago/n2mt?source=${languages[LanguageKind.source.index]}&target=${languages[LanguageKind.dest.index]}&text=$source",
+      "https://openapi.naver.com/v1/papago/n2mt?source=${languages.$1}&target=${languages.$2}&text=$source",
       options: Options(
         method: 'POST',
         contentType: 'application/x-www-form-urlencoded',
